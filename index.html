@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chik-chik  -  Барбершоп</title>
+    
+    <link rel="stylesheet" href="/CSS/style.css">
 </head>
+
 <body>
    <header class="header">
     <div class="container">
-        <img class="header__logo"   src="/img/logo.svg" alt="Логотип Барбершопа Чик-Чик">
+        <div class="header__container">
+        <img class="header__logo"   src="/img/logo.svg" alt="Логотип Барбершопа Чик-Чик" width="70px" height="40px">
     <nav class="header__navigation navigation">
         <ul class="navigation__list">
             <li class="navigation__item">
@@ -20,15 +24,15 @@
         </ul>
     </nav>
     <a href="#reserve" class="header__link main-link">Записаться</a>
+         </div>
     </div>
-   
    </header>
 
    <main>
     <section class="hero">
         <div class="container">
             <h1 class="hero__title">
-                <span class="visually-hidden">Барбершопа Чик-Чик</span>
+                <span class="visually-hidden">Сайт Барбершопа Чик-Чик</span>
                 <span>Мы создаём искусство, которое не стыдно показать</span>
             </h1>
             <div class="hero__slider slider">
@@ -240,7 +244,6 @@
                                 <input class="radio__input" type="radio" name="day">
                                 <span class="radio__label">21 января</span>
                             </label>
-
                         </fieldset>
 
                         <fieldset class="reserve__fieldset reserve__fieldset_sub">
@@ -273,8 +276,9 @@
                             <span class="radio__label">19:00-20:30</span>
                         </label>
                         </fieldset>
+                    </fieldset>
                 </div>
-                <button type="button">Записаться</button>
+                <button class="reserve__btn main-link" disabled>Записаться</button>
             </form>
         </div>
     </section>
@@ -283,18 +287,18 @@
    <footer class="footer">
     <div class="container">
         <img class="footer__logo"   src="/img/logo.svg" alt="Логотип Барбершопа Чик-Чик">
-    <nav class="footer__navigation navigation">
-        <ul class="navigation__list">
-            <li class="navigation__item">
-                <a href="#price" class="navigation__link">Стоимость услуг</a>
+    <div class="footer__navigation">
+        <ul class="footer__list">
+            <li class="footer__item-list">
+                <a href="#price" class="footer__link">Стоимость услуг</a>
             </li>
-            <li class="navigation__item">
-                <a href="#about" class="navigation__link">О нас</a>
+            <li class="footer__item-list">
+                <a href="#about" class="footer__link">О нас</a>
             </li>
         </ul>
-    </nav>
-    <p class="footer__designer">Designer: Anastasia Ilina</p>
-    <p class="footer__developer">Developer: Egor Bondarenko</p>
+    </div>
+    <a class="footer__designer">Designer: Anastasia Ilina</a>
+    <a class="footer__developer" href="google.com" >Developer: Egor Bondarenko</a>
 
     <p class="footer__copyright">© chik chik, 2023</p>
     </div>
