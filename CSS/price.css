@@ -56,6 +56,10 @@
     text-transform: uppercase;
     }
 
+.price__item-count {
+    white-space: nowrap;
+}    
+
 
 @media (max-width: 768px) {
     .price {
@@ -77,12 +81,31 @@
     }
 }
 
+@media (max-width: 560px) {
+    .price {
+        padding: 32px 0;
+    }
+    .price__title {
+        font-size: 20px;
+        margin-bottom: 8px;
+    }
+    .price__tagline
+     {
+        font-size: 12px;
+        margin-bottom: 24px;
+     }
 
+     .price__item {
+        font-size: 12px;
+        padding-bottom: 6px;
+        margin-bottom: 16px;
+     }
 
-
-
-
-
+     .price__list {
+        margin-bottom: 24px;
+     }
+    
+}
 
 @media (max-width: 560px) {
     .price {
