@@ -1,0 +1,30 @@
+.radio__input {
+    appearance: none;
+    position: absolute;
+}
+.radio__label {
+    display: inline-block;
+    padding: 16px 24px;
+    line-height: 100%;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 36px;
+    border: 1px solid #BFBDB2;
+}
+.radio__label:hover {
+    background: #EFE7BE;
+
+}
+.radio__input:focus + .radio__label,
+.radio__input:checked + .radio__label {
+    color: #241D1C ;
+    background: #F6f3e3;
+}
+
+.radio__label_special {
+    padding-left: 52px;
+    background-image: var(--bg-image);
+    background-size: 36px;
+    background-position: 8px;
+    background-repeat: no-repeat;
+}
