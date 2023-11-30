@@ -7,6 +7,7 @@
     
     <link rel="stylesheet" href="/CSS/normalize.css">
     <link rel="stylesheet" href="/CSS/style.css">
+    <link rel="stylesheet" href="/CSS/preload.css">
     <link rel="stylesheet" href="/CSS/header.css">
     <link rel="stylesheet" href="/CSS/navigation.css">
     <link rel="stylesheet" href="/CSS/main-link.css">
@@ -16,8 +17,10 @@
     <link rel="stylesheet" href="/CSS/about.css">
     <link rel="stylesheet" href="/CSS/reserve.css">
     <link rel="stylesheet" href="/CSS/radio.css">
+    <link rel="stylesheet" href="/CSS/footer.css">
     
     
+    <script src="JS/script.js"></script>
     
 </head>
 
@@ -298,9 +301,9 @@
    </main>
 
    <footer class="footer">
-    <div class="container">
+    <div class="footer__container">
         <img class="footer__logo"   src="/img/logo.svg" alt="Логотип Барбершопа Чик-Чик">
-    <div class="footer__navigation">
+    <div class="footer__navigation navigation">
         <ul class="footer__list">
             <li class="footer__item-list">
                 <a href="#price" class="footer__link">Стоимость услуг</a>
@@ -310,11 +313,14 @@
             </li>
         </ul>
     </div>
-    <a class="footer__designer">Designer: Anastasia Ilina</a>
-    <a class="footer__developer" href="google.com" >Developer: Egor Bondarenko</a>
-
-    <p class="footer__copyright">© chik chik, 2023</p>
+    <div class="footer__dev">
+        <a class="footer__designer">Designer: Anastasia Ilina</a>
+        <a class="footer__developer" href="google.com" >Developer: Egor Bondarenko</a>
     </div>
+   
+
+    </div>
+    <p class="footer__copyright">© chik chik, 2023</p>
 
    </footer>
 
