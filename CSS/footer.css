@@ -6,26 +6,28 @@
     align-items: center;
     justify-content: space-between;
     
-
 }
 
 
-/* посомтреть от сюда???? */
 .footer_dev {
-    display: ;
-
+    
+     display: flex;
+     justify-content: flex-end;
+     margin-right: 54px;
 }
+
 .footer__logo {
 }
+
+
 .footer__navigation {
-    flex-grow: 1;
-    display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     margin-right: 54px;
 }
 .footer__list {
 }
 .footer__item-list {
+    display: table-row;
 }
 .footer__link {
 }

@@ -9,6 +9,7 @@
     line-height: 100%;
     text-transform: uppercase;
     cursor: pointer;
+    border: none;
   }
   
   .main-link:hover:not(:disabled) {
