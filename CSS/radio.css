@@ -8,17 +8,21 @@
     line-height: 100%;
     text-transform: uppercase;
     cursor: pointer;
-    border-radius: 36px;
     border: 1px solid #BFBDB2;
+    border-radius: 36px;
 }
-.radio__label:hover {
-    background: #EFE7BE;
+.radio__label:hover:not(:disabled) {
+    color: #EFE7BE;
 
 }
 .radio__input:focus + .radio__label,
 .radio__input:checked + .radio__label {
     color: #241D1C ;
-    background: #F6f3e3;
+    background: #F6F3E3;
+}
+
+.radio__input:disabled + .radio__label {
+    opacity: 0.3;
 }
 
 .radio__label_special {
