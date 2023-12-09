@@ -181,27 +181,114 @@ const renderSpec = (wrapper, data) => {
     wrapper.append(...labels);
 };
 
+const renderMonth = (wrapper, data) => {
+    const labels = data.map((month) => {
+        const label = document.createElement('label');
+        label.classList.add('radio');
+        label.innerHTML = `
+        <input class="radio__input" type="radio" name="month" value="${month}">
+        <span class="radio__label">${new Intl.DateTimeFormat('ru-RU', {
+            month: 'long'
+        }).format(new Date(month))}</span>
+        `;
+        return label;
+    });
+
+    wrapper.append(...labels);
+};
+
+const renderDay = (wrapper, data, month) => {
+    const labels = data.map((day) => {
+        const label = document.createElement('label');
+        label.classList.add('radio');
+        label.innerHTML = `
+        <input class="radio__input" type="radio" name="day" value="${day}">
+        <span class="radio__label">${new Intl.DateTimeFormat('ru-RU', {
+            month: 'long', day: 'numeric'
+        }).format(new Date(`${month}/${day}`))}</span>`;
+        return label;
+    });
+
+    wrapper.append(...labels);
+};
+
+const renderTime = (wrapper, data) => {
+    const labels = data.map((time) => {
+        const label = document.createElement('label');
+        label.classList.add('radio');
+        label.innerHTML = `
+        <input class="radio__input" type="radio" name="time" value="${time}">
+        <span class="radio__label">${time}</span>
+        `;
+        return label;
+    });
+
+    wrapper.append(...labels);
+};
 
 const initReserve = () => {
     const reserveForm = document.querySelector('.reserve__form');
-    const {fieldspec, fielddata, fieldmonth, fieldday, fieldtime, btn } = reserveForm;
+    const {fieldspec, fielddata, fieldmonth, fieldday, fieldtime, btn } = 
+        reserveForm;
     
     addDisabled([fieldspec, fielddata, fieldmonth, fieldday, fieldtime, btn]);
 
-    reserveForm.addEventListener('change', async event => {
+    reserveForm.addEventListener('change', async (event) => {
         const target = event.target;
 
         if (target.name === 'service') {
             addDisabled([fieldspec, fielddata, fieldmonth, fieldday, fieldtime, btn]);
-            fieldspec.innerHTML = `<legend class="reserve__legend">Специалист</legend>`;
+            fieldspec.innerHTML = 
+            `<legend class="reserve__legend">Специалист</legend>`;
             addPreload(fieldspec);
-
-            const response = await fetch(`${API_URL}/api?service=${target.value}`)
+            const response = await fetch(`${API_URL}/api?service=${target.value}`);
             const data = await response.json();
             renderSpec(fieldspec, data);
             removePreload(fieldspec);
             removeDisabled([fieldspec]);
+        };
+
+        if (target.name === 'special') {
+            addDisabled([fielddata, fieldmonth, fieldday, fieldtime, btn]);
+            addPreload(fieldmonth);
+            const response = await fetch(`${API_URL}/api?spec=${target.value}`);
+            const data = await response.json();
+            fieldmonth.textContent = '';
+            renderMonth(fieldmonth, data);
+            removePreload(fieldmonth);
+            removeDisabled([fielddata, fieldmonth]);
         }
+
+        if (target.name === 'month') {
+            addDisabled([fieldday, fieldtime, btn]);
+            addPreload(fieldday);
+            const response = await fetch(
+                `${API_URL}/api?spec=${reserveForm.special.value}&month=${reserveForm.month.value}`
+                );
+            const data = await response.json();
+            fieldday.textContent = '';
+            renderDay(fieldday, data, reserveForm.month.value);
+            removePreload(fieldday);
+            removeDisabled([fieldday]);
+        }
+
+        if (target.name === 'day') {
+            addDisabled([fieldtime, btn]);
+            addPreload(fieldtime);
+            const response = await fetch(
+                `${API_URL}/api?spec=${reserveForm.special.value}&month=${reserveForm.month.value}&day=${target.value}`
+                );
+            const data = await response.json();
+            fieldtime.textContent = '';
+            renderTime(fieldtime, data);
+            removePreload(fieldtime);
+            removeDisabled([fieldtime]);
+        }
+
+        if (target.name === 'time') {
+            removeDisabled([btn]);
+        }
+
     })
 };
 
