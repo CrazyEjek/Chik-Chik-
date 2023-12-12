@@ -110,12 +110,14 @@
     .about__description {
         margin-bottom: 12px;
         margin-bottom: 16px;
+        margin-left: 0px;
 
     }
 
     .about__item {
-        padding-left: 72px;
+        padding-left: 96px;
         padding-top: 0;
+        /* margin-right: 80px; */
         background-position:left;
     }
 
