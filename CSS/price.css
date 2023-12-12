@@ -23,7 +23,7 @@
     content: '';
     flex-basis: 50%;
     background-position: top;
-    block-size: cover;
+    background-size: cover;
     background-image: url('../img/price-wall.jpg');    
     }
 

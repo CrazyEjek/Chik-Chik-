@@ -3,10 +3,11 @@ import { API_URL } from "./const.js";
 
 export const initReserve = () => {
     const reserveForm = document.querySelector('.reserve__form');
-    const {fieldspec, fielddata, fieldmonth, fieldday, fieldtime, btn } = 
+    const {fieldservice, fieldspec, fielddata, fieldmonth, fieldday, fieldtime, btn } = 
         reserveForm;
     
-    addDisabled([fieldspec, fielddata, fieldmonth, fieldday, fieldtime, btn]);
+    // Отправка запроса на сервер и ответ с сервера
+        addDisabled([fieldspec, fielddata, fieldmonth, fieldday, fieldtime, btn]);
 
     reserveForm.addEventListener('change', async (event) => {
         const target = event.target;
@@ -64,10 +65,33 @@ export const initReserve = () => {
             removeDisabled([btn]);
         }
 
-    })
+    });
+
+    reserveForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(reserveForm);
+        const json = JSON.stringify(Object.fromEntries(formData));
+
+        const response = await fetch(`${API_URL}api/order`, {
+            method: 'post',
+            body: json,
+        });
+        const data = await response.json();
+
+        addDisabled([fieldservice, fieldspec, fielddata, fieldmonth, fieldday, fieldtime, btn]);
+
+        //  получаем ответ от сервера и выводим его
+        const succes = document.createElement('p'); succes.textContent = 
+        `Спасибо за бронь #${data.id}!!!
+        Ждем вас! Время Вашей записи: ${new Intl.DateTimeFormat('Ru-ru', {
+            month: 'long',
+            day: 'numeric',
+        }).format(new Date(`${data.month}/${data.day}`))},
+         ${data.time}.`;
+        reserveForm.append(succes)
+    });
 };
-
-
 
 const addDisabled = (arr) => {
     arr.forEach(elem => {
